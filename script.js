@@ -7,6 +7,7 @@ const dialog = document.getElementById('formPopup');
 const openPopup = document.getElementById('addBook');
 const closePopup = document.getElementById('close-btn');
 const submit = document.getElementById('submit');
+const image = document.getElementById('image');
 
 openPopup.addEventListener('click' , () => {
     dialog.showModal();
@@ -29,6 +30,7 @@ function Book(title , author , pages , read)
     this.author = author;
     this.pages = pages;
     this.read = read;
+    this.image = image;
     this.info = function()
     {
        return `${this.title} by ${this.author}, ${this.pages} pages, ${
@@ -64,4 +66,5 @@ function resetForm()
     this.author = '';
     this.pages = '';
     this.read = false;
+    this.image = '';
 }
