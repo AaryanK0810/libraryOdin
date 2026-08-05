@@ -1,19 +1,288 @@
-body
-{
-  background-color : #F5F5DC
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
 }
 
-#close-btn {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background: none;
-    border: none;
-    font-size: 24px;
-    line-height: 1;
-    cursor: pointer;
-    color: #666;
-    padding: 4px 8px;
-    border-radius: 4px;
-    transition: background 0.2s;
-  }
+body{
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+    min-height:100vh;
+    color:white;
+    padding:40px;
+}
+
+.Library{
+    max-width:1400px;
+    margin:auto;
+}
+
+h1{
+    text-align:center;
+    font-size:3rem;
+    margin-bottom:30px;
+    color:#f8fafc;
+    letter-spacing:1px;
+}
+
+/* Buttons */
+
+#addBook,
+#clearLibrary{
+    border:none;
+    cursor:pointer;
+    border-radius:10px;
+    padding:12px 25px;
+    font-size:16px;
+    font-weight:600;
+    transition:.3s;
+}
+
+#addBook{
+    background:#4f46e5;
+    color:white;
+}
+
+#addBook:hover{
+    background:#4338ca;
+    transform:translateY(-3px);
+}
+
+#clearLibrary{
+    background:#ef4444;
+    color:white;
+    margin-left:10px;
+}
+
+#clearLibrary:hover{
+    background:#dc2626;
+    transform:translateY(-3px);
+}
+
+/* Grid */
+
+#libraryContainer{
+    margin-top:40px;
+
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+    gap:25px;
+}
+
+/* Book Card */
+
+.book-card{
+
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    transition:.35s;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.35);
+}
+
+.book-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 20px 45px rgba(0,0,0,.45);
+}
+
+/* Image */
+
+.book-image{
+
+    width:100%;
+    height:320px;
+
+    object-fit:cover;
+
+    border-bottom:1px solid rgba(255,255,255,.15);
+}
+
+/* Card Text */
+
+.book-card h3{
+
+    padding:18px 18px 10px;
+
+    font-size:1.4rem;
+}
+
+.book-card p{
+
+    padding:5px 18px;
+
+    color:#d1d5db;
+}
+
+/* Remove Button */
+
+.remove{
+
+    width:calc(100% - 30px);
+
+    margin:18px 15px;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#ef4444;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    transition:.3s;
+}
+
+.remove:hover{
+
+    background:#dc2626;
+
+    transform:scale(1.03);
+}
+
+/* Dialog */
+
+dialog{
+
+    border:none;
+
+    border-radius:18px;
+
+    padding:35px;
+
+    width:420px;
+
+    background:#ffffff;
+
+    color:#111827;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.45);
+}
+
+dialog::backdrop{
+
+    background:rgba(0,0,0,.7);
+    backdrop-filter:blur(5px);
+}
+
+dialog h2{
+
+    text-align:center;
+    margin-bottom:25px;
+}
+
+/* Form */
+
+form{
+
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+input[type=text],
+input[type=number]{
+
+    padding:12px;
+
+    border-radius:8px;
+
+    border:1px solid #ccc;
+
+    outline:none;
+
+    font-size:15px;
+}
+
+input:focus{
+
+    border-color:#4f46e5;
+}
+
+input[type=file]{
+
+    padding:8px;
+}
+
+/* Submit */
+
+#submit{
+
+    background:#4f46e5;
+
+    color:white;
+
+    border:none;
+
+    padding:12px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+#submit:hover{
+
+    background:#4338ca;
+}
+
+/* Close Button */
+
+#close-btn{
+
+    position:absolute;
+
+    top:15px;
+    right:15px;
+
+    background:none;
+
+    border:none;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+    color:#555;
+}
+
+#close-btn:hover{
+
+    color:red;
+}
+
+/* Mobile */
+
+@media(max-width:700px){
+
+    body{
+        padding:20px;
+    }
+
+    h1{
+        font-size:2.2rem;
+    }
+
+    dialog{
+        width:95%;
+    }
+}
