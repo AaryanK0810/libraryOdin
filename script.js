@@ -18,3 +18,9 @@ function addBookToLibrary()
     library.push(createBook);
 }
 
+function displayBooks()
+{
+    library.forEach((book) => {
+        console.log(book.info());
+    })
+}
