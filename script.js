@@ -1,5 +1,10 @@
 const library = [];
+const dialog = document.getElementById('formPopup');
+const openPopup = document.getElementById('addBook');
 
+openPopup.addEventListener('click' , () => {
+    dialog.showModal();
+})
 function Book(title , author , pages , read)
 {
     this.title = title;
