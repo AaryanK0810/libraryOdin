@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
@@ -12,10 +13,12 @@
         <dialog id = 'formPopup'>
             <h2>New Book</h2>
         <form id = 'submitBook'>
-        <button class="close-btn" aria-label="Close dialog">×</button>
+        <button id="close-btn" aria-label="Close dialog">×</button>
         <input type = 'text' id = 'title' placeholder = 'Title' required><br>
         <input type = 'text' id = 'author' placeholder = 'Author' required><br>
         <input type = 'number' id = 'pages' placeholder = 'Pages' required><br>
+        <label for = 'read'>Read</label>
+        <input type = 'checkbox' id = 'read'><br>
         <button id = 'submit' type = 'submit'>Submit</button>
         </form>
         </dialog>
