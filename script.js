@@ -7,7 +7,9 @@ const dialog = document.getElementById('formPopup');
 const openPopup = document.getElementById('addBook');
 const closePopup = document.getElementById('close-btn');
 const submit = document.getElementById('submit');
-const image = document.getElementById('image');
+const image = document.getElementById('image-chooser');
+const libraryContainer = document.getElementById('libraryContainer');
+const clear = document.getElementById('clearLibrary');
 
 openPopup.addEventListener('click' , () => {
     dialog.showModal();
@@ -23,8 +25,14 @@ submit.addEventListener('click' , (e) => {
     resetForm();
 });
 
+clear.addEventListener('click' , () => {
+    resetForm();
+    library.length = 0;
+    displayBooks();
+})
+
 //Book Constructor
-function Book(title , author , pages , read)
+function Book(title , author , pages , read,image)
 {
     this.title = title;
     this.author = author;
@@ -40,13 +48,22 @@ function Book(title , author , pages , read)
 }
 
 //Add book to Library
-function addBookToLibrary()
-{
+function addBookToLibrary() {
+
+    const file = image.files[0];
+    const imageURL = file
+        ? URL.createObjectURL(file)
+        : " ";
+
     const createBook = new Book(
-        title.value , author.value , pages.value , read.checked
+        title.value,
+        author.value,
+        pages.value,
+        read.checked,
+        imageURL
     );
+
     library.push(createBook);
-    console.log('Book added to library');
     displayBooks();
 }
 
@@ -54,17 +71,32 @@ function addBookToLibrary()
 
 function displayBooks()
 {
+    libraryContainer.innerHTML = '';
     library.forEach((book) => {
-        console.log(book.info());
+        const bookCard = document.createElement('div');
+        bookCard.classList.add('book-card');
+        bookCard.innerHTML = `
+            <img src="${book.image}" alt="Book Cover" class="book-image">
+            <h3>${book.title}</h3>
+            <p>Author: ${book.author}</p>
+            <p>Pages: ${book.pages}</p>
+            <p>Status: ${book.read ? "Read" : "Not Read Yet"}</p>
+            <button class = 'remove' onclick = 'removeBook(library.indexOf(Book))'>Remove Book</button>
+        `;
+        libraryContainer.appendChild(bookCard);
     })
 }
 
+function removeBook(index) {
+    library.splice(index, 1);
+    displayBooks();
+}
 //Reset the form
 function resetForm()
 {
-    this.title = '';
-    this.author = '';
-    this.pages = '';
-    this.read = false;
-    this.image = '';
+   title.value = "";
+author.value = "";
+pages.value = "";
+read.checked = false;
+image.value = "";
 }
